@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 
 from django.urls import include, path
+from django.shortcuts import render
 
+def render_react(request):
+    return render(request, "index.html")
 
 urlpatterns = [
+    path('', render_react),
     path('admin/', admin.site.urls),
     path('api/v1/', include('chatbot.urls')),
 ]
