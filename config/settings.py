@@ -25,7 +25,7 @@ SECRET_KEY = 'uc7jzz1c#1x4#hk#6@4##qrpxdt)6vuo1$#6!ls0h%%a4qg1u1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -133,8 +133,11 @@ STATIC_URL = '/static/'
 #     'PAGE_SIZE': 10
 # }
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:3000",
+]
 
 import django_heroku
 django_heroku.settings(locals())
