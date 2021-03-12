@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, permissions, mixins
+from rest_framework import viewsets, permissions, mixins, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -38,3 +38,20 @@ class QuestionViewSet(GenericViewSet,
                     ListModelMixin):
     serializer_class = QuestionSerializer
     queryset = Question.objects.all()
+
+    def create(self, request, *args, **kwargs):
+        serializer = QuestionSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            
+            new_data = {
+                "content": request.data['content'],
+                "answer": "HE RESPONDIDO A TI PREGUNTA HIJO"
+            }
+
+            serializer.create(new_data)
+
+            return Response(new_data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
