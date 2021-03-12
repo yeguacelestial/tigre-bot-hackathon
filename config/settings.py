@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -134,7 +135,6 @@ STATIC_URL = '/static/'
 #     'PAGE_SIZE': 10
 # }
 
-CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOW_HEADERS = (
 #     'accept',
 #     'accept-encoding',
