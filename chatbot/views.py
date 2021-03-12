@@ -14,6 +14,7 @@ from chatbot.serializers import UserSerializer, GroupSerializer, QuestionSeriali
 
 from chatbot.dialogflow_handler import detect_intent_knowledge
 
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
