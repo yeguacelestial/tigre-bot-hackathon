@@ -12,6 +12,7 @@ from rest_framework.viewsets import GenericViewSet
 from chatbot.models import Question
 from chatbot.serializers import UserSerializer, GroupSerializer, QuestionSerializer
 
+from chatbot.dialogflow_handler import detect_intent_knowledge
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -44,10 +45,18 @@ class QuestionViewSet(GenericViewSet,
 
         if serializer.is_valid():
             serializer.save()
-            
+
+            answer = detect_intent_knowledge(
+                'tigre-bot-wglb',
+                '0', # Session id
+                'en-US',
+                'MTAxODc0NDI1MjM3ODY0NDQ4MDA',
+                [request.data['content']],
+            )
+
             new_data = {
                 "content": request.data['content'],
-                "answer": "HE RESPONDIDO A TI PREGUNTA HIJO"
+                "answer": answer
             }
 
             serializer.create(new_data)
