@@ -15,6 +15,8 @@ The base endpoint must be the following URL:
 
 `https://tigre-bot-api.herokuapp.com/api/v1`
 
+---
+
 ### Sending a question
 
 **Definition**
@@ -38,6 +40,8 @@ Vary: Accept
     "content": "this is the third question test"
 }
 ```
+
+---
 
 ### Getting all the questions with associated answers
 
