@@ -1,4 +1,4 @@
-# tigre-bot-api
+# tigre-bot-hackathon
 
 ## Flowchart
 
